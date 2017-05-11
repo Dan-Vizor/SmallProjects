@@ -1,0 +1,40 @@
+<html>
+<title>Solar System</title>
+  <style type='text/css'>
+    body {background-color:gray;
+    }
+  </style>
+  <head>
+    <script type='text/javascript' src='sol.js'>
+        //window.onload = loadPlanets();
+    </script>
+  </head>
+  <body onload="loadPlanets()">
+    <svg id='svgSolarSystem' width='100%' height='100%'>
+      <rect x=0 y=0 width='100%' height='100%' fill=black />
+    </svg>
+  </body>
+  <footer>
+    <fieldset>
+      <label for="newN">name</label>
+      <input type="text" id="newN" value="unnamed" />
+
+      <label for="newR">radius</label>
+      <input type="int" id="newR" value="18" />
+
+      <label for="newO">orbit</label>
+      <input type="int" id="newO" value="250" />
+
+      <label for="newC">colour</label>
+      <input type="text" id="newC" value="green" />
+
+      <label for="newOF">orbit frequency</label>
+      <input type="int" id="newOF" value="2" />
+
+      <button onclick="clickNewPlanet()">make new planet</button>
+      <button onclick="updatePlanet()">update</button>
+      <button onclick="testName()">find planet</button>
+    </fieldset>
+    <button onclick="clickDelPlanets()">clear all</button>
+  </footer>
+</html>
