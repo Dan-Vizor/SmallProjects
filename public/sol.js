@@ -30,7 +30,6 @@ planets = JSON.parse(httpGet('/planets'));
 
   svgSolarSystem = document.getElementById('svgSolarSystem');
   svgRect = svgSolarSystem.getBoundingClientRect();
-  console.log(svgRect)
 
   const sunOrigin = {
     x : svgRect.width / 2,
@@ -56,14 +55,17 @@ for(var starNo = 0; starNo < 2800; starNo ++) {
   svgSolarSystem.appendChild(sunElement);
 
   planets.forEach(planet => {
+    //if (svgRect.height > sunOrigin.y + planet.orbitDistance) {
     planet.element = document.createElementNS(SVG_NS, 'circle');
+    planet.element.setAttribute('id', planet.name);
     planet.element.setAttribute('name', planet.name);
     planet.element.setAttribute('r', planet.radius);
     planet.element.setAttribute('fill', planet.colour);
     planet.element.setAttribute('cx', sunOrigin.x + planet.orbitDistance);
     planet.element.setAttribute('cy', sunOrigin.y);
     svgSolarSystem.appendChild(planet.element);
-  });
+  //}
+});
 
   const animationSpeed = 0.008;
   const animateFrame = function() {
@@ -97,6 +99,7 @@ var clickNewPlanet = function() {
     console.log(body)
 
     newPlanet.element = document.createElementNS(SVG_NS, 'circle');
+    newPlanet.element.setAttribute('id', newPlanetN);
     newPlanet.element.setAttribute('name', newPlanetN);
     newPlanet.element.setAttribute('r', newPlanetR);
     newPlanet.element.setAttribute('fill', newPlanetC);
@@ -106,33 +109,11 @@ var clickNewPlanet = function() {
     planets.push(newPlanet);
     console.log('planet made named:', newPlanetN);
   }};
-  
 
-  var updatePlanet = function() {
-    var ifFound = false
-    var newPlanetN = document.getElementById('newN').value;
-    var newPlanetO = document.getElementById('newO').value;
-    var newPlanetC = document.getElementById('newC').value;
-    var newPlanetR = document.getElementById('newR').value;
-    var newPlanetOF = document.getElementById('newOF').value;
-        planets.forEach(planet => {
-         if (planet.name === newPlanetN) {
-          var toUpdate = document.getElementById(newPlanetN);
-          console.log(planet)
-          console.log(svgSolarSystem)
-          svgSolarSystem.removeChild(planet.element);
-          console.log('planet found and edited:', newPlanetN)
-          ifFound = true
-          var newPlanet = {name: newPlanetN, radius: newPlanetR, orbitDistance: newPlanetO, colour: newPlanetC, frequency: newPlanetOF}
-          newPlanet.element = document.createElementNS(SVG_NS, 'circle');
-          newPlanet.element.setAttribute('r', newPlanetR);
-          newPlanet.element.setAttribute('fill', newPlanetC);
-          newPlanet.element.setAttribute('cx', svgRect.width / 2 + newPlanetO);
-          svgSolarSystem.appendChild(newPlanet.element);
-          planets.push(newPlanet);
-      }})
-      if (ifFound === false) { console.log('error: cannot find planet named:', newPlanetN) }
-    }
+var clickupdatePlanet = function() {
+  delPlanet()
+  clickNewPlanet()
+}
 
   var testName = function() {
     var ifFound = false
@@ -150,20 +131,21 @@ var clickNewPlanet = function() {
       console.log('cannot find planet named: ' + findPlanetN)
     }
   }
-
-   var clickDelPlanets = function() {
-    planets.forEach(planet => {svgSolarSystem.removeChild(planet.element);})
-    planets = [];
+  var deathStar = function() {
+    console.log('Death Star WIP')
   }
 
 var delPlanet = function() {
   var ifFound = false
+  var xhr = new XMLHttpRequest();
     var newPlanetN = document.getElementById('newN').value;
+          xhr.open('DELETE', '/planet/' + newPlanetN, true);
+          xhr.send();
     planets.forEach(planet => {
      if (planet.name === newPlanetN) {
-      var xhr = new XMLHttpRequest();
-      xhr.open('DELETE', '/planet/newPlanetN', true);
-      svgSolarSystem.removeChild(planet.element);
+      console.log(newPlanetN)
+      console.log(document.getElementById(newPlanetN))
+      svgSolarSystem.removeChild(svgSolarSystem.getElementById(newPlanetN));
       console.log('planet found and deleted named:', newPlanetN)
       ifFound = true
     }})
