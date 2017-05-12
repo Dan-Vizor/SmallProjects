@@ -13,6 +13,11 @@ app.get('/', function(req, res) {
 	res.send('');
 });
 
+app.post('/get/ip/address', function (req, res) {
+    var ip = request.connection.remoteAddress
+    console.log(ip)
+})
+
 app.get('/planets', function(req, res) {
 	var planets = [];
 	res.setHeader('Content-Type', 'application/json');
@@ -24,7 +29,6 @@ app.get('/planets', function(req, res) {
 				function(err, results) {
 					if (err) console.log('error finding planets', err);
 					console.log('page loaded');
-					console.log('planets found', results);
 					console.log('');
 					planets = results;
 					res.send(results);
@@ -57,9 +61,9 @@ app.delete('/planet/:name', function(req, res) {
 	client.open(function(err) {
 		client.collection('planets', function(err, collection) {
 			if (err) console.log('error opening collection:', err);
-			collection.insert(req.body, function(err, data) {
+			collection.remove({'name': name}, function(err, data) {
 				if (err) {
-					console.log('error')
+					console.log('error', err)
 				}
 				console.log('planet deleted')
 			res.send('ok');
