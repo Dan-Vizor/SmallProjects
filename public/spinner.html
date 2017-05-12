@@ -8,7 +8,6 @@
   </style>
     <script type='text/javascript'>
 window.onload = function() {
-  // Create the Grouping Element
   const svgMain = document.getElementById('svgMain');
   var groupElement = document.getElementById('fidgetSpinner');
   console.log(groupElement)
@@ -16,8 +15,8 @@ window.onload = function() {
   var spinSpeed = 0;
   var angle = 0;
   var maxRPM = 0;
-  // Using key presses
   var lastKeyTime = 0;
+
   window.onkeyup = function(e) {
     const now = new Date().getTime();
     const diff = now - lastKeyTime;
@@ -31,7 +30,6 @@ window.onload = function() {
         break;
     }
   }
-  // Using Mouse
   var timeMouseDown = 0;
   var mouseDownPosY = null;
   svgMain.onmousedown = function(e) {
@@ -48,8 +46,8 @@ window.onload = function() {
     else {
     if (spinSpeed < CspinSpeed){spinSpeed = 10 * (travel / timeDiff) + CspinSpeed;}
       else {spinSpeed = 10 * (travel / timeDiff) - CspinSpeed;}
+      if (spinSpeed > 100) {spinSpeed = 100;}
     }
-    if (spinSpeed > 100) {spinSpeed = 100;}
     maxRPM = spinSpeed
     var printmaxRPM = document.getElementById('printmaxRPM')
       printmaxRPM.innerText = 'maxRPM = ' + Math.round(Math.abs(maxRPM))
@@ -58,16 +56,16 @@ window.onload = function() {
     angle += spinSpeed;
     spinSpeed *= 0.995;
     CspinSpeed = spinSpeed
-    /*groupElement = document.getElementById('fidgetSpinner');
-    if (spinSpeed < 5) {groupElement.element.setAttribute('fill', black);}
+    if (Math.abs(spinSpeed) < 8) {groupElement.setAttribute('fill', 'black');}
     else{
-    if (spinSpeed < 10) {groupElement.element.setAttribute('fill', red);}
+    if (Math.abs(spinSpeed) < 20) {groupElement.setAttribute('fill', 'red');}
     else{
-    if (spinSpeed < 15) {groupElement.element.setAttribute('fill', orange);}
+    if (Math.abs(spinSpeed) < 40) {groupElement.setAttribute('fill', 'orange');}
     else{
-    if (spinSpeed > 20) {groupElement.element.setAttribute('fill', yellow);}
-    else{groupElement.element.setAttribute('fill', white);}
-}}}*/
+    if (Math.abs(spinSpeed) < 60) {groupElement.setAttribute('fill', 'yellow');}
+    else{
+      if (Math.abs(spinSpeed) < 80) {groupElement.setAttribute('fill', 'white');}
+}}}}
     var printRPM = document.getElementById('printRPM')
       printRPM.innerText = 'RPM = ' + Math.abs(spinSpeed)
     var transform = 'rotate(' + angle + ',300,300)';
@@ -106,7 +104,7 @@ window.onload = function() {
     <fieldset>
       <p>how to use:</p>
       <p>1. always click on right side of spinner</p>
-      <p>2. click and pull up or down</p>
+      <p>2. click and pull up or down to spin</p>
       <p>3. click to stop</p>
     </fieldset>
     <p>message to S.V:</p>
