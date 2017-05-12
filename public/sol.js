@@ -13,7 +13,7 @@ function httpGet(theUrl) {
       return xmlHttp.responseText;
   }
 
-planets = JSON.parse(httpGet('http://localhost:3000/planets'));
+planets = JSON.parse(httpGet('/planets'));
   console.log(planets);
 
 /*planets =  [
@@ -57,6 +57,7 @@ for(var starNo = 0; starNo < 2800; starNo ++) {
 
   planets.forEach(planet => {
     planet.element = document.createElementNS(SVG_NS, 'circle');
+    planet.element.setAttribute('name', planet.name);
     planet.element.setAttribute('r', planet.radius);
     planet.element.setAttribute('fill', planet.colour);
     planet.element.setAttribute('cx', sunOrigin.x + planet.orbitDistance);
@@ -96,6 +97,7 @@ var clickNewPlanet = function() {
     console.log(body)
 
     newPlanet.element = document.createElementNS(SVG_NS, 'circle');
+    newPlanet.element.setAttribute('name', newPlanetN);
     newPlanet.element.setAttribute('r', newPlanetR);
     newPlanet.element.setAttribute('fill', newPlanetC);
     newPlanet.element.setAttribute('cx', svgRect.width / 2 + newPlanetO);
@@ -115,6 +117,9 @@ var clickNewPlanet = function() {
     var newPlanetOF = document.getElementById('newOF').value;
         planets.forEach(planet => {
          if (planet.name === newPlanetN) {
+          var toUpdate = document.getElementById(newPlanetN);
+          console.log(planet)
+          console.log(svgSolarSystem)
           svgSolarSystem.removeChild(planet.element);
           console.log('planet found and edited:', newPlanetN)
           ifFound = true
@@ -131,16 +136,36 @@ var clickNewPlanet = function() {
 
   var testName = function() {
     var ifFound = false
-    var newPlanetN = document.getElementById('newN').value;
+    var findPlanetN = document.getElementById('findN').value;
     planets.forEach(planet => {
-     if (planet.name === newPlanetN) {
-      console.log('planet found named:', newPlanetN)
+     if (planet.name === findPlanetN) {
+      var testNameOutput = document.getElementById('testNameOutput')
+      testNameOutput.innerText = 'planet found named ' + planet.name
+      console.log('planet found named:', findPlanetN)
       ifFound = true
     }})
-    if (ifFound === false) { console.log('cannot find planet named:', newPlanetN) }
+    if (ifFound === false) {
+      var testNameOutput = document.getElementById('testNameOutput')
+      testNameOutput.innerText = 'cannot find planet named ' + findPlanetN
+      console.log('cannot find planet named: ' + findPlanetN)
+    }
   }
 
    var clickDelPlanets = function() {
     planets.forEach(planet => {svgSolarSystem.removeChild(planet.element);})
     planets = [];
+  }
+
+var delPlanet = function() {
+  var ifFound = false
+    var newPlanetN = document.getElementById('newN').value;
+    planets.forEach(planet => {
+     if (planet.name === newPlanetN) {
+      var xhr = new XMLHttpRequest();
+      xhr.open('DELETE', '/planet/newPlanetN', true);
+      svgSolarSystem.removeChild(planet.element);
+      console.log('planet found and deleted named:', newPlanetN)
+      ifFound = true
+    }})
+    if (ifFound === false) { console.log('error cannot find planet named:', newPlanetN) }
   }

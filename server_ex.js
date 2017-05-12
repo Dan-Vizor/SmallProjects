@@ -51,6 +51,24 @@ app.put('/planet', function(req, res) {
 	})
 });
 });
+app.delete('/planet/:name', function(req, res) {
+	var name = req.params.name;
+	console.log('deleteing planet:', name)
+	client.open(function(err) {
+		client.collection('planets', function(err, collection) {
+			if (err) console.log('error opening collection:', err);
+			collection.insert(req.body, function(err, data) {
+				if (err) {
+					console.log('error')
+				}
+				console.log('planet deleted')
+			res.send('ok');
+			client.close();
+			});
+		
+	})
+});
+});
 
 http.createServer(app).listen(3000, function(){
 	console.log('server on')
