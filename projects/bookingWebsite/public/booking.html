@@ -1,0 +1,41 @@
+<html>
+<title>Code Club booking website</title>
+  <style type='text/css' src='booking.css'></style>
+  
+  <head>
+    <h1>Longlevans Code Club booking website</h1>
+  </head>
+  
+  <body>
+	  <script type='text/javascript' src='booking.js'></script>
+	  <fieldset>
+    <h4>enter child</h4>
+      
+      <p>first name:</p>
+      <input type="text" id="kidFName" value="Daniel" />
+      
+      <p>last name:</p>
+      <input type="text" id="kidLName" value="Vizor" />
+
+		<p> which week to you want to book your child into (use: DDMMYY)</p>
+		<input type="text" id="date" value="010717"/>
+
+      <button onclick="enterChild()">book child</button>
+    </fieldset>
+    
+    <fieldset>
+    <h4>remove child</h4>
+      <p>childs name:</p>
+      <input type="text" id="kidName" value="daniel" />
+
+		<p> which week to you want to remove your child from (use: DDMMYY)</p>
+		<input type="text" id="date" value="010717"/>
+
+      <button onclick="removeChild()">remove child</button>
+    </fieldset>
+    
+    <fieldset>
+		<p id="out"></p>
+	</fieldset>
+  </body>
+</html>

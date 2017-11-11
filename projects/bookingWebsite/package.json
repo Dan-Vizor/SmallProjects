@@ -1,0 +1,14 @@
+{
+  "name": "booking_website",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bookingServer.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "daniel V",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.3"
+  }
+}

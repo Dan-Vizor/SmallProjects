@@ -1,0 +1,2 @@
+import testMod
+testMod.Hello()

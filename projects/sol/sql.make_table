@@ -1,0 +1,8 @@
+insert into planets values ('Venus', 17, 110, 'purple', 4);
+insert into planets values ('Mars', 12, 220, 'brown', 1.7);
+insert into planets values ('Jupiter', 28, 290, 'tan', 1.3);
+insert into planets values ('Neptune', 20, 365, 'navy', 1.2);
+insert into planets values ('Uranus', 20, 430, 'blue', 1.1);
+insert into planets values ('Polto', 6, 480, 'gray', 0.9);
+insert into planets values ('Earth', 18, 160, 'green', 2.5);
+insert into planets values ('ghost', 12, 330, 'black', 30);
