@@ -1,3 +1,3 @@
 # CodeClub
 
-this a reposatery of my small projects
+this a reposatery for my small projects

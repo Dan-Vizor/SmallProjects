@@ -10,6 +10,6 @@ app.get('/', function(req, res) {
 	res.send('200');
 });
 
-http.createServer(app).listen(4000, function(){
+http.createServer(app).listen(3000, function(){
 	console.log('server online')
 }); 
