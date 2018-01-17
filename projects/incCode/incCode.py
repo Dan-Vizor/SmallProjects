@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 ##################################################
 def encrypt(data, key, loop):
 	for x in range(0,loop):
@@ -101,17 +101,17 @@ while True:
 
 	if mode == 1:
 		key = int(input("enter key(max 25): "))
-		data = raw_input("enter text: ")
+		data = input("enter text: ")
 		out = encryptword(data, key)
 		print ("\n" + out)
 
 	if mode == 2:
-		data = raw_input("enter code: ")
+		data = input("enter code: ")
 		key = int(input("enter key(max 25): "))
 		decryptWord(data, key)
 
 	if mode == 3:
-		enter = raw_input("enter code: ")
+		enter = input("enter code: ")
 		end = test_decrypt(enter)
 		if not end:
 			print("\nerror decrypting\nthe code maybe using a more advansed cyhper or maybe just junk")
@@ -122,12 +122,12 @@ while True:
 		break
 		
 	if mode == 4:
-		word = raw_input("enter word: ")
+		word = input("enter word: ")
 		out = scan_dict(word)
 		if not out:
 			print("can't find " + word)
 			print("do you want to add " + word + " to the dictonary y/n")
-			a = raw_input(": ")
+			a = input(": ")
 			if a == "y":
 				doc = open("words.txt","a")
 				doc.write("\n" + word)
