@@ -1,0 +1,6 @@
+format = process_name - [description](notes)
+
+master-[checks that all other processes are running and re-start them if they crash](run from pi.local on boot)
+	root-[tells all other processes other than master when to run]
+	user_script_handler-[runs user script]
+		fuction process-[runs a script to make a subsystem work eg: updating drives to match with throtle input](will be more than one instanse running)
