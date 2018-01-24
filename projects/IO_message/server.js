@@ -7,6 +7,9 @@ var log = {};
 
 app.get('/', function(req, res){
   res.sendFile(__dirname + '/user.html');
+  io.on('chat message', function(msg){
+	io.emit('chat message', "user connected");
+  });
 });
 
 io.on('connection', function(socket){
@@ -19,14 +22,8 @@ io.on('connection', function(socket){
 io.on('connection', function(socket){
   users += 1;
   console.log("users online: " + users)
-  socket.on('chat message', function(msg){
-	io.emit('chat message', "user connected");
-  });
   socket.on('disconnect', function(){
     users -= 1;
-    socket.on('chat message', function(msg){
-	io.emit('chat message', "user disconnected");
-  });
     console.log("users online: " + users)
   });
 });
