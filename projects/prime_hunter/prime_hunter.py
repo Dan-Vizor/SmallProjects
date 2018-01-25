@@ -30,9 +30,9 @@ for line in doc:
 	break
 doc.close
 
+doc = open("currentNo.txt", "w")
 while True:
 	if isPrime(curNo): doc_write(curNo)
-	doc = open("currentNo.txt", "w")
 	doc.write(str(curNo))
 	doc.close
 	curNo += 1
