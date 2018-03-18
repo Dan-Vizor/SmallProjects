@@ -3,7 +3,7 @@ import time
 import mcpi.minecraft as minecraft
 from mcpi.block import *
 mc = minecraft.Minecraft.create("localhost")
-bl = 247
+bl = 20
 
 def toArray(x,y,z): return str(x) + "," + str(y) + "," + str(z) + ","
 
@@ -46,7 +46,6 @@ print (BTD)
 
 acBlocks = [toArray(int(ox),int(oy),int(oz))]
 NacBlocks = acBlocks
-loop = 0
 while True:
 	for ita in range(0,len(acBlocks)):
 		x,y,z = fromArray(acBlocks,ita)
@@ -87,4 +86,3 @@ while True:
 			#mc.setBlock(cx,cy,cz,0)
 			NacBlocks += [toArray(cx,cy+1,cz)]
 		acBlocks += NacBlocks
-	loop += 1
