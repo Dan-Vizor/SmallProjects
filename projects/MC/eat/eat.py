@@ -58,31 +58,26 @@ while True:
 		ax,ay,az = cx,cy,cz
 		if mc.getBlock(cx+1,cy,cz) in BTD:
 			mc.setBlock(cx+1,cy,cz,bl)
-			mc.setBlock(cx,cy,cz,0)
 			NacBlocks += [toArray(cx+1,cy,cz)]
 
 		if mc.getBlock(cx-1,cy,cz) in BTD:
 			mc.setBlock(cx-1,cy,cz,bl)
-			mc.setBlock(cx,cy,cz,0)
 			NacBlocks += [toArray(cx-1,cy,cz)]
 			
 		if mc.getBlock(cx,cy,cz-1) in BTD:
 			mc.setBlock(cx,cy,cz-1,bl)
-			mc.setBlock(cx,cy,cz,0)
 			NacBlocks += [toArray(cx,cy,cz-1)]
 
 		if mc.getBlock(cx,cy,cz+1) in BTD:
 			mc.setBlock(cx,cy,cz+1,bl)
-			mc.setBlock(cx,cy,cz,0)
 			NacBlocks += [toArray(cx,cy,cz+1)]
 
 		if mc.getBlock(cx,cy-1,cz) in BTD:
 			mc.setBlock(cx,cy-1,cz,bl)
-			mc.setBlock(cx,cy,cz,0)
 			NacBlocks += [toArray(cx,cy-1,cz)]
 
 		if mc.getBlock(cx,cy+1,cz) in BTD:
 			mc.setBlock(cx,cy+1,cz,bl)
-			mc.setBlock(cx,cy,cz,0)
 			NacBlocks += [toArray(cx,cy+1,cz)]
+		mc.setBlock(cx,cy,cz,0)
 		acBlocks += NacBlocks
