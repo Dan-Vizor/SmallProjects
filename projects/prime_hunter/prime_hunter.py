@@ -8,31 +8,30 @@ def isPrime(No):
 		if not No%number:
 			return False
 	return True
-		
-def doc_write(No):
-	doc = open("primes.txt", "a")
-	doc.write(str(No) + "\n")
-	doc.close
-
-def stand_form(No):
-	No = float(No)
-	power = 0
-	while True:
-		No /= 10
-		power += 1
-		if No in range(0,9): break
-	return str(No) + "x10^" + str(power)
 
 #main
+try: doc = open("currentNo.txt", "r")
+except:
+	doc = open("currentNo.txt", "w")
+	doc.write("1")
 doc = open("currentNo.txt", "r")
 for line in doc:
 	curNo = int(line)
 	break
 doc.close
 
-doc = open("currentNo.txt", "w")
+stri = str(curNo) + "-" + str(curNo + 100000)
+doc = open("output/primes/" + stri + ".txt", "a")
+loop = 0
 while True:
-	if isPrime(curNo): doc_write(curNo)
-	doc.write(str(curNo))
-	doc.close
+	if loop == 100000:
+		loop = 0
+		doc = open("currentNo.txt", "w")
+		doc.write(str(curNo))
+		stri = str(curNo) + "-" + str(curNo + 100000)
+		doc = open("output/primes/" + stri + ".txt", "a")
+	
+	if isPrime(curNo):
+		doc.write(str(curNo) + "\n")
 	curNo += 1
+	loop += 1

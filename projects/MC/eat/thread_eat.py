@@ -1,4 +1,6 @@
 #!/usr/bin/python
+import time
+import thread
 import mcpi.minecraft as minecraft
 from mcpi.block import *
 mc = minecraft.Minecraft.create("localhost")
@@ -29,23 +31,9 @@ def fromArray(array, place):
 ox,oy,oz = mc.player.getPos()
 mc.setBlock(ox+2,oy,oz,bl)
 ox += 2
+oy -= 1
 
-while True:
-	if mc.events.pollBlockHits(): break
-	else: time.sleep(0.1)
-
-up = 1
-BTD = []
-while True:
-	if mc.getBlock(ox,oy+up,oz) != 0:
-		BTD += [mc.getBlock(ox,oy+up,oz)]
-		up += 1
-	else: break
-print (BTD)
-
-acBlocks = [toArray(int(ox),int(oy),int(oz))]
-NacBlocks = acBlocks
-while True:	
+def scan(NacBlocks,acBlocks):
 	acBlocks = NacBlocks
 	NacBlocks = []
 	for ita in range(0,len(acBlocks)):
@@ -76,3 +64,22 @@ while True:
 			NacBlocks += [toArray(cx,cy+1,cz)]
 		mc.setBlock(cx,cy,cz,0)
 		acBlocks += NacBlocks
+	print(acBlocks + " " + NacBlocks)
+
+while True:
+	if mc.events.pollBlockHits(): break
+	else: time.sleep(0.1)
+
+up = 1
+BTD = []
+while True:
+	if mc.getBlock(ox,oy+up,oz) != 0:
+		BTD += [mc.getBlock(ox,oy+up,oz)]
+		up += 1
+	else: break
+print (BTD)
+
+acBlocks = [toArray(int(ox),int(oy),int(oz))]
+NacBlocks = acBlocks
+while True:
+	thread.start_new_thread (scan, (NacBlocks,acBlocks))
