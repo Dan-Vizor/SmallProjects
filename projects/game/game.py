@@ -29,6 +29,7 @@ def add_to_inv(item,quan,inv):
   else: print("inv full")
 
 def del_from_inv(item,inv):
+	pass #WIP
 
 def scan_inv(item,inv):
   if str(item) = "all":
