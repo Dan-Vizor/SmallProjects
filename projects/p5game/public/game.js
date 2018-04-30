@@ -12,7 +12,7 @@ var x = 400;
 var y = 200;
 function draw() {
     background('#0000AA');
-    if (y < 410){
+    if (y < 400){
 		fall += 1
 	} else {fall = 0}
 	y += fall
