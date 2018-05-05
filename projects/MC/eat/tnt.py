@@ -3,7 +3,7 @@ import mcpi.minecraft as minecraft
 from mcpi.block import *
 import time
 mc = minecraft.Minecraft.create("localhost")
-bl = 20
+#bl = 20
 
 def toArray(x,y,z): return str(x) + "," + str(y) + "," + str(z) + ","
 
@@ -28,7 +28,7 @@ def fromArray(array, place):
 	return int(x),int(y),int(z)
 
 ox,oy,oz = mc.player.getPos()
-mc.setBlock(ox+2,oy,oz,bl)
+mc.setBlock(ox+2,oy,oz,46,1)
 ox += 2
 
 while True:
@@ -53,27 +53,27 @@ while True:
 		cx,cy,cz = fromArray(acBlocks,ita)
 		ax,ay,az = cx,cy,cz
 		if mc.getBlock(cx+1,cy,cz) in BTD:
-			mc.setBlock(cx+1,cy,cz,bl)
+			mc.setBlock(cx+1,cy,cz,46,1)
 			NacBlocks += [toArray(cx+1,cy,cz)]
 
 		if mc.getBlock(cx-1,cy,cz) in BTD:
-			mc.setBlock(cx-1,cy,cz,bl)
+			mc.setBlock(cx-1,cy,cz,46,1)
 			NacBlocks += [toArray(cx-1,cy,cz)]
 			
 		if mc.getBlock(cx,cy,cz-1) in BTD:
-			mc.setBlock(cx,cy,cz-1,bl)
+			mc.setBlock(cx,cy,cz-1,46,1)
 			NacBlocks += [toArray(cx,cy,cz-1)]
 
 		if mc.getBlock(cx,cy,cz+1) in BTD:
-			mc.setBlock(cx,cy,cz+1,bl)
+			mc.setBlock(cx,cy,cz+1,46,1)
 			NacBlocks += [toArray(cx,cy,cz+1)]
 
 		if mc.getBlock(cx,cy-1,cz) in BTD:
-			mc.setBlock(cx,cy-1,cz,bl)
+			mc.setBlock(cx,cy-1,cz,46,1)
 			NacBlocks += [toArray(cx,cy-1,cz)]
 
 		if mc.getBlock(cx,cy+1,cz) in BTD:
-			mc.setBlock(cx,cy+1,cz,bl)
+			mc.setBlock(cx,cy+1,cz,46,1)
 			NacBlocks += [toArray(cx,cy+1,cz)]
-		mc.setBlock(cx,cy,cz,0)
+		#mc.setBlock(cx,cy,cz,0)
 		acBlocks += NacBlocks
