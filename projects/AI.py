@@ -5,7 +5,7 @@ def comp(array,low,high):
 	loop = 0
 	out = ""
 	for cy in range(low,high):
-		out += array[cy]
+		out += array[cy] + " "
 	return out
 
 while True:
@@ -14,5 +14,6 @@ while True:
 	###
 	Aimp = Rinp.split()
 	
-	if lower(Aimp[0]) == "find":
-		os.system("find " + comp(Aimp,1,len(Aimp)))
+	if Aimp[0].lower() == "find":
+		if Aimp[0].lower() == "file":
+			print(os.system("find " + comp(Aimp,1,len(Aimp))))
