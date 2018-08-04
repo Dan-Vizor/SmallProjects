@@ -2,7 +2,7 @@
 import time
 loop = 500
 
-print("start\n")
+print("start")
 def test():
   t1 = time.time()
   var = 1
@@ -26,5 +26,5 @@ for x in range(0,loop):
   add += testdata[x]
 
 out = add /loop
-print(out)
-print(out * 1000000)# 1GB
+print("end\n")
+print(str(out * 1000000) + " for 1GB")# 1GB
