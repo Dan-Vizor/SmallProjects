@@ -40,4 +40,5 @@ for password_length in range(1, 9):
             exit()
         #print(guess, attempts, guess_hash)
         if password_length > scan_len:
+        	scan_len += 1
 	        print("testing length {}".format(password_length))
