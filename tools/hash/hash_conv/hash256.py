@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import hashlib
+import hashlib, time
 
 # functions #
 def sha256(inp):
@@ -17,22 +17,14 @@ while True:
 		break
 	except: print("error file '" + fName + "' not found\n")
 
-while True:
-	x = raw_input("\nrun (y/n): ")
-	if x == "y":
-		break
-	elif x == "n":
-		continue
-	else:
-		print("error invalid input\n")
-
-print("running\n")
-out = open(outFile,"w")
+print("running...\n")
+out = open("out","w")
 main = open("sha256_main.txt","a")
 for line in file:
 	x = sha256(line)
 	out.write(x + "\n")
 	main.write(x + "\n")
+	time.sleep(0.002)
 
 print("done")
 

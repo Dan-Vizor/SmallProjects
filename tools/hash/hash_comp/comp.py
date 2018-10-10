@@ -1,5 +1,5 @@
 #!/usr/bin/python
-import hashlib
+import hashlib, time
 
 def sha256(inp):
 	hash_object = hashlib.sha256(inp)
@@ -21,6 +21,7 @@ else:
 print("scaning...\n")
 file = open("pass_plain.txt","r")
 for line in file:
+	time.sleep(0.001)
 	if sha256(inp) == line.rstrip():
 		print("match found!\npassword: " + line)
 		found = True
