@@ -18,11 +18,9 @@ tar_hash = raw_input("enter target hash(sha256): ")
 tar_hash = tar_hash.strip()
 dict_list = import_file("pass_list.txt")
 
-print("\nstarting dict scan...")
-
 for line in range(0,len(dict_list)):
 	if sha256(dict_list[line].strip()) == tar_hash:
-		print("password is {}.".format(dict_list[line].strip()))
+		print("password is {}. found in dict scan.".format(dict_list[line].strip()))
 		exit()
 
 # dict scan finished, no match found
@@ -35,7 +33,8 @@ for password_length in range(1, 9):
     	#sleep(0.001)
         attempts += 1
         guess = ''.join(guess)
-        if sha256(guess) == tar_hash:
+        guess_hash = sha256(guess)
+        if guess_hash == tar_hash:
             print('password is {}. found in {} guesses.'.format(guess, attempts))
             exit()
-        print(guess, attempts)
+        print(guess, attempts,guess_hash)
