@@ -15,7 +15,7 @@ def import_file(file):
 	return out
 
 tar_hash = raw_input("enter target hash(sha256): ")
-tar_hash += tar_hash.strip()
+tar_hash = tar_hash.strip()
 dict_list = import_file("pass_list.txt")
 
 # dict scan
@@ -25,7 +25,7 @@ for line in range(0,len(dict_list)):
 		exit()
 
 # dict scan finished, no match found
-print("running brute force attack...\n")
+print("running brute force attack...\ntesting length 1...")
 scan_len = 1
 chars = string.ascii_lowercase + string.digits + string.punctuation
 attempts = 0
@@ -41,4 +41,4 @@ for password_length in range(1, 9):
         #print(guess, attempts, guess_hash)
         if password_length > scan_len:
         	scan_len += 1
-	        print("testing length {}".format(password_length))
+	        print("testing length {}...".format(password_length))
