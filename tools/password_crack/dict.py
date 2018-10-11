@@ -15,14 +15,12 @@ def import_file(file):
 	return out
 
 tar_hash = raw_input("enter target hash(sha256): ")
-#tar_hash += tar_hash.strip()
+tar_hash = tar_hash.strip()
 dict_list = import_file("pass_list.txt")
 
 # dict scan
 for line in range(0,len(dict_list)):
 	print(dict_list[line].strip())
-#	if sha256(dict_list[line].strip()) == tar_hash:
-#		print("password is {}. found in dict scan.".format(dict_list[line].strip()))
-	if dict_list[line].strip() == tar_hash.strip():
+	if dict_list[line].strip() == tar_hash:
 		print("password is {}. found in dict scan.".format(dict_list[line].strip()))
 print("no match found")
