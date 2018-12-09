@@ -1,3 +1,4 @@
+#!/usr/bin/python
 def AlphabetSoup(str): 
     Llist = []
     for each in str:
