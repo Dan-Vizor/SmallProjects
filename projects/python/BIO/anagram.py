@@ -1,4 +1,6 @@
-def isAnagram (inp, no):
+#!/usr/bin/python
+
+def isAnagram(inp, no):
     tarList = []
     tar = inp * no
     print(inp)

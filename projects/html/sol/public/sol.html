@@ -1,0 +1,48 @@
+<html>
+<title>Solar System</title>
+  <style type='text/css'>
+    body {background-color:gray;
+      margin: 0px;
+    }
+  </style>
+  <head>
+    <script type='text/javascript' src='sol.js'>
+        //window.onload = loadPlanets();
+    </script>
+  </head>
+  <body onload="loadPlanets()" >
+    <svg id='svgSolarSystem' width='100%' height='100%'>
+      <rect x=0 y=0 width='100%' height='100%' fill=black />
+    </svg>
+  </body>
+  <footer>
+    <fieldset>
+    <p>editing planets</p>
+      <label for="newN">name</label>
+      <input type="text" id="newN" value="unnamed" />
+
+      <label for="newR"> radius</label>
+      <input type="int" id="newR" value="15" />
+
+      <label for="newO"> orbit</label>
+      <input type="int" id="newO" value="380" />
+
+      <label for="newC"> colour</label>
+      <input type="text" id="newC" value="white" />
+
+      <label for="newOF"> orbit frequency</label>
+      <input type="int" id="newOF" value="2" />
+
+      <button onclick="clickNewPlanet()">add planet</button>
+      <button onclick="delPlanet()">delete planet</button>
+    </fieldset>
+    <fieldset>
+    <p>finding planets</p>
+      <label for="findN">name</label>
+      <input type="int" id="findN" value="" />
+      <button onclick="testName()">find planet</button>
+      <p id = 'testNameOutput'></p>
+    </fieldset>
+    <button onclick="deathStar()">Death Star (WIP)</button>
+  </footer>
+</html>
