@@ -1,0 +1,14 @@
+Q: How to run the program?
+A: Open terminal and type './spam.py'.
+
+Q: What do I do when the program says '> '?
+A: You can do three of the following:
+1. 'go' run the bot
+2. 'reset' allows you to re-enter the options you previously entered
+3. 'abort' ends the program
+
+Q: How do I change the spam wordlist?
+A: Change the contents of 'input.txt' (each line is a seprate option for the program)
+
+Q: How do I change the min and max times for the bot to write?
+A: just ask me to do it.
