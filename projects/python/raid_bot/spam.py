@@ -36,7 +36,9 @@ def leet(inp):
 	return out
 
 def printout(inp):
-	typewrite(inp)
+	#typewrite(inp)
+	for i in inp:
+		press(i)
 	press("return")
 
 def inputblock():
