@@ -1,0 +1,10 @@
+commands:
+add = adds two inputed numbers and displays the output
+sub = subtracts two inputed numbers and displays the output
+mul = multiplys the two inputed numbers
+div = divides the two inputed numbers
+squ = squares the inputed number
+
+exit = closes the program
+help = displays this menu
+
