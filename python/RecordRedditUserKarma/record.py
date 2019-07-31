@@ -29,7 +29,14 @@ def FileExist(filename):
 	except:
 		return False
 
-SAMPLE_TIME = 60 * float(input("enter sample time (mins): "))
+while True:
+	try:
+		multiplier = float(input("enter sample time (mins): "))
+		break
+	except:
+		print("invalid input")
+
+SAMPLE_TIME = 60 * multiplier
 OUTPUT_PATH = ""
 
 # input usernames
@@ -65,7 +72,7 @@ while True:
 	for user in users: data += ", {}".format(GetRedditUserKarma(user))
 	file.write("{}{}\n".format(round(time.time()), data))
 	file.close()
-
+	
 	time.sleep(SAMPLE_TIME)
 
 # csv legend:
