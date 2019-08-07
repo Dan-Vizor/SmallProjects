@@ -2,3 +2,5 @@ node_modules/
 output/
 currentNo.txt
 a.out
+RedditMeta.txt
+output.*
