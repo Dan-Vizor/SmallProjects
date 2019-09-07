@@ -1,18 +1,19 @@
 #!/usr/bin/python
 
-#size = input("size(kB): ")
-size = 1000000
+size = input("size(kB): ")
+size = size * 1000
 print("start")
 doc = open("u.txt","w")
-for y in range(0,size):
-    for x in range(0,999):
-        doc.write("        ")
-        
-    if y == size / 4:
-        print("25%")
-    if y == size / 2:
-        print("50%")
-    if y == size / 4 * 3:
-        print("75%")
+out = ""
+y = 0
+while y < size:
+	out += "A"
+	
+	if y == size / 4: print("25%")
+	if y == size / 2: print("50%")
+	if y == size / 4 * 3: print("75%")
+	y += 1
+	
+doc.write(out)
 doc.close()
 print("end")
